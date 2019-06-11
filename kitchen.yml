@@ -1,0 +1,24 @@
+---
+driver:
+  name: terraform
+  variable_files:
+    - terraform.tfvars
+
+provisioner:
+  name: terraform
+
+platforms:
+  - name: github
+
+verifier:
+  name: terraform
+  controls:
+    - default_test
+  systems:
+    - name: default
+      backend: local
+      attrs_outputs: 
+        customized_inspec_attribute : testRepoGitHTTPURL
+      
+suites:
+  - name: default
